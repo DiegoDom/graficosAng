@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-around">
+    <div>
+        <div style="display: block">
+            <canvas baseChart width="350" height="350" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType">
+      </canvas>
+        </div>
+    </div>
+    <div>
+        <table class="table table-responsive table-condensed text-center">
+            <tr>
+                <th *ngFor="let label of doughnutChartLabels">{{label}}</th>
+            </tr>
+            <tr *ngFor="let d of doughnutChartData; let i=index" [class]="'line-'+i">
+                <td *ngFor="let label of doughnutChartLabels; let j=index">{{d && d[j] | number}}</td>
+            </tr>
+        </table>
+        <button class="btn btn-primary btn-block" (click)="randomize()">Randomize</button>
+    </div>
+</div>
