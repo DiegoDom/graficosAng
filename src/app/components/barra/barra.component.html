@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-around">
+    <div>
+        <table class="table table-responsive table-condensed">
+            <tr>
+                <th *ngFor="let label of barChartLabels">{{label}}</th>
+            </tr>
+            <tr *ngFor="let d of barChartData; let i=index" [class]="'line-'+i">
+                <td *ngFor="let label of barChartLabels; let j=index">{{d && d.data[j] | number}}</td>
+            </tr>
+        </table>
+        <button class="btn btn-primary btn-block" (click)="randomize()">Randomize</button>
+    </div>
+    <div>
+        <div style="display: block">
+            <canvas baseChart width="500" height="200" [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
+          </canvas>
+        </div>
+    </div>
+</div>
