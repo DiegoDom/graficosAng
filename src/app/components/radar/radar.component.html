@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-around">
+    <div>
+        <table class="table table-responsive table-condensed text-center">
+            <tr>
+                <th *ngFor="let label of radarChartLabels">{{label}}</th>
+            </tr>
+            <tr *ngFor="let d of radarChartData; let i=index" [class]="'line-'+i">
+                <td *ngFor="let label of radarChartLabels; let j=index">{{d && d.data[j]}}</td>
+            </tr>
+        </table>
+        <button class="btn btn-primary btn-block" (click)="randomize()">Randomize</button>
+    </div>
+    <div>
+        <div style="display: block">
+            <canvas width="600" height="300" baseChart [datasets]="radarChartData" [options]="radarChartOptions" [labels]="radarChartLabels" [chartType]="radarChartType">
+            </canvas>
+        </div>
+    </div>
+</div>
